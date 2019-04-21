@@ -2,8 +2,8 @@
 layout: post
 title: "CQS and CQRS"
 date: 2019-04-06
-categories: [programming, design, architectural, pattern]
-tags: [design, architectural, pattern, CQS, CQRS]
+categories: [programming]
+tags: [architectural-pattern, CQS, CQRS]
 ---
 
 Of recently, usage of these two terms is increasing among programming. So what does these abbreviation stands for: 
@@ -43,3 +43,4 @@ And what is CQRS. CQRS is same as CQS in terms of command and query separation. 
 Separation of models in CQRS helps in having cleaner Models. Read/query models only contain properties that are required for display or as per API requirement, while command model will only contain properties that will be used to update the 'state of the system' i.e. only required properties that need to create/update record in database. Separate models also help is reading and updating data from different database. Query can call NoSql to fetch the records and Command can insert data into RDBMS. 
 
 It is suggested to use CQS approach for all classes/Entities in the application. This helps in adhering to the SOLID principles. While CQRS should only be applied where it is required. Following multi-model approach of CQRS can be cumbersome for small applications. Also, an application may have multiple BoundedContext and not all of them need to use CQRS. It should therefore be applied on BoundedContexts which would really benefit from the approach.
+

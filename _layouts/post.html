@@ -7,3 +7,9 @@ layout: default
 <div class="post">
   {{ content }}
 </div>
+
+<div class="categories">
+    Category : {{page.categories | capitalize | join: ', '}}
+    <br>
+    Tags: {{page.tags | capitalize | join: ', '}}
+</div>
