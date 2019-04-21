@@ -2,6 +2,8 @@
 layout: post
 title: "CQS and CQRS"
 date: 2019-04-06
+categories: [programming, design, architectural, pattern]
+tags: [design, architectural, pattern, CQS, CQRS]
 ---
 
 Of recently, usage of these two terms is increasing among programming. So what does these abbreviation stands for: 
@@ -20,17 +22,19 @@ Command - These are the functions that have side effect. They update values i.e.
 
 CQS is a approach which states that Queries and Commands should be separate from each other. Or in other words it means that functions having no 'side-effect' should be separated out from one having 'side-effect'. An example of this can be following code snippet.
 
-`public interface IEmployeeService
+{% highlight csharp %}
+public interface IEmployeeService
 {
     Employee GetEmployeeById(long id);
     IEnumerable GetAllEmployee();
     void CreateEmployee(string firstName, string lastName, DateTime dateOfBirth);
     void UpdateEmployee(string firstName, string lastName);
-}`
+}
+{% endhighlight  %}
 
 Here, we have two queries, GetEmployeeById and GetAllEmployee. Also, there are two commands namely CreateEmployee and UpdateEmployee. It is easy to see here that both of our queries are not meant to affect the 'state of system', while the commands on completion of their execution will bring about a change in values of database. Why is this separation required. Suppose you start working on an existing project. In this you have a method name
 
-`GetEmployeeByIdOrName(int id, string name)` and while running the code you find out that method `GetEmployeeByIdOrName` not just provide you with an Employee object but also updates the Name of Employee for given id if search was not successful on provided 'name'.
+```GetEmployeeByIdOrName(int id, string name)``` and while running the code you find out that method ```GetEmployeeByIdOrName``` not just provide you with an Employee object but also updates the Name of Employee for given id if search was not successful on provided 'name'.
 
 Hence, there need to be a clear distinction on what the method would do. If the method name and return type suggests that it is querying the system, then it should only do that. 
 
